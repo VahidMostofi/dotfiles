@@ -90,6 +90,7 @@ brew install ssh-copy-id
 brew install tree
 brew install vbindiff
 brew install zopfli
+brew install zplug
 
 # Remove outdated versions from the cellar.
 brew cleanup

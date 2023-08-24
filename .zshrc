@@ -2,6 +2,9 @@
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 
+# set vi mode for terminal
+set -o vi
+
 export PATH="$HOME/bin:$PATH";
 
 for file in ~/.{aliases,functions}; do
@@ -12,7 +15,21 @@ unset file;
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug load
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug "zsh-users/zsh-autosuggestions", as:plugin, defer:2
 
 plugins=(git z colored-man-pages)
 
