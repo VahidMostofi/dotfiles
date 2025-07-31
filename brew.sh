@@ -92,5 +92,11 @@ brew install vbindiff
 brew install zopfli
 brew install zplug
 
+brew install rbenv
+brew install direnv
+brew install starship
+
+
 # Remove outdated versions from the cellar.
 brew cleanup
+
